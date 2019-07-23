@@ -1,0 +1,100 @@
+@import url('http://necolas.github.io/normalize.css/3.0.2/normalize.css');
+
+/*General*/
+body {
+  margin: 0;
+  padding: 0 2%;
+  font: 'Muli', 'Helvetica Neue', 'Helvectica', 'Arial', serif;
+  font-weight: 300;
+  font-size: 1em;
+  line-height: 1.5em;
+  color: #8d9aa5;
+  text-align: center;
+}
+
+
+h1, h2, h3 {
+  font-weight: 400;
+  color: #384047;
+  line-height: 1.5em;
+  font-family: 'Pacifico', cursive;
+}
+
+h1 {
+  font-size: 3em;
+  margin: 60px 0 40px;
+}
+
+h2 {
+  font-size: 2.5em;
+  font-weight: 300;
+  margin: 0;
+  padding: 10px 0 30px 0;
+}
+
+#home h2 {
+  margin: -40px 0 0;
+}
+
+h3 {
+  font-size: 2em;
+  font-weight: 300;
+  margin: 0;
+  padding-top: 5%;
+}
+
+h3 em {
+  font-style: normal;
+  font-weight: 300;
+  margin: 0 0 10px 5px;
+  padding: 0;
+  color: #8d9aa5;
+}
+
+p {
+  display: inline;
+  font-size: 1.75em;
+  border-bottom: solid 1.5px;
+  border-bottom-color: auto;
+  padding-bottom: 3px;
+  line-height: 1.5em;
+  font-family: 'Damion';
+}
+
+#color div {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  border-radius: 15% 25%;
+  margin: 15px;
+}
+
+#color div:hover {
+  border-color: black;
+  border: solid 3.5px;
+  border-radius: 25% 15%;
+}
+
+span {
+  color: red;
+}
+
+footer {
+  padding: 5%;
+  margin-top: 2.5%;
+}
+
+.colors {
+  columns: 2;
+  column-rule: auto;
+}
+
+.base_color {
+  column-span: all;
+}
+
+.footer {
+  border-bottom: none;
+  font-size: 1em;
+  font-family: 'Pacifico', cursive;
+}

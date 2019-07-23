@@ -6,19 +6,25 @@ var red = parseInt(prompt('What is your red value for your RGB color?'));
 if (red >= 0 && red < 256) {
   ;
 } else {
-  var red = parseInt(prompt('Try again. Make sure you enter an integer between 0 and 256'))
+  while (red <= 0 || red > 256) {
+  var red = parseInt(prompt('Try again. Make sure you enter an integer between 0 and 255'))
+  }
 }
 var green = parseInt(prompt('What is your green value for your RGB color?'));
 if (green >= 0 && green < 256) {
   ;
 } else {
-  var green = parseInt(prompt('Try again. Make sure you enter an integer between 0 and 256'))
+  while (green <= 0 || green > 256) {
+  var green = parseInt(prompt('Try again. Make sure you enter an integer between 0 and 255'))
+  }
 }
 var blue = parseInt(prompt('What is your blue value for your RGB color?'));
 if (blue >= 0 && blue < 256) {
   ;
 } else {
-  var blue = parseInt(prompt('Try again. Make sure you enter an integer between 0 and 256'))
+  while (blue <= 0 || blue > 256) {
+  var blue = parseInt(prompt('Try again. Make sure you enter an integer between 0 and 255'))
+  }
 }
 
 

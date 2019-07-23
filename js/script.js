@@ -68,7 +68,7 @@ while ( red > 0 && green > 0 && blue > 0 ) {
 }
 
 //Prints all Shades
-print( '<section class="colors"><h3>Shades: <br></h3>' );
+print( '<h3>Shades: <br></h3><section class="colors">' );
 
 while (red < 256 && green < 256 && blue < 256) {
 

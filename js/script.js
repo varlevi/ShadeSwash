@@ -81,7 +81,7 @@ var printRGB = () => {
 
 //Initial Color Print
 rgbColor = baseColor();
-html += '<div style="background-color:' + rgbColor + '"></div>';
+html = `<div style="background-color: ${rgbColor}"></div>`
 
 
 print( '<h3>Base Color: <br></h3>' );

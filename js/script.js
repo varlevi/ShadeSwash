@@ -7,7 +7,7 @@ var blue;
 //these if-else clauses make sure the user enters valid numbers
 var getRed = () => {
   red = parseInt(prompt("What is your red value for your RGB color?"));
-  if (!(red >= 0 && red < 256)) return alert("Your integer needs to be between 0 and 255.");
+  if (!(red >= 0 || red < 256)) return alert("Your integer needs to be between 0 and 255.");
   while (red <= 0 || red > 256) {
     red = parseInt(
       prompt(
@@ -20,7 +20,7 @@ getRed()
 
 var getGreen = () => {
   green = parseInt(prompt("What is your green value for your RGB color?"));
-  if (!(green >= 0 && green < 256)) return alert("Your integer needs to be between 0 and 255.");
+  if (!(green >= 0 || green < 256)) return alert("Your integer needs to be between 0 and 255.");
   while (green <= 0 || green > 256) {
     green = parseInt(
       prompt(
@@ -33,7 +33,7 @@ getGreen();
 
 var getBlue = () => {
   blue = parseInt(prompt("What is your blue value for your RGB color?"));
-  if (!(blue >= 0 && blue < 256)) return alert("Your integer needs to be between 0 and 255.");
+  if (!(blue >= 0 || blue < 256)) return alert("Your integer needs to be between 0 and 255.");
   while (blue <= 0 || blue > 256) {
     blue = parseInt(
       prompt(

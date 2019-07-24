@@ -1,36 +1,69 @@
 //variables
-var html = '';
+var html;
 var rgbColor;
-var red = parseInt(prompt('What is your red value for your RGB color?'));
+var red;
+var green;
+var blue;
 //these if-else clauses make sure the user enters valid numbers
-if (red >= 0 && red < 256) {
-  ;
-} else {
+var getRed = () => {
+  red = parseInt(prompt("What is your red value for your RGB color?"));
+  if (!(red >= 0 && red < 256)) return alert("Your integer needs to be between 0 and 255.");
   while (red <= 0 || red > 256) {
-  var red = parseInt(prompt('Try again. Make sure you enter an integer between 0 and 255'))
+    red = parseInt(
+      prompt(
+        "Try again. Make sure you enter an integer between 0 and 255 for the red value."
+      )
+    );
   }
 }
-var green = parseInt(prompt('What is your green value for your RGB color?'));
-if (green >= 0 && green < 256) {
-  ;
-} else {
+getRed()
+
+var getGreen = () => {
+  green = parseInt(prompt("What is your green value for your RGB color?"));
+  if (!(green >= 0 && green < 256)) return alert("Your integer needs to be between 0 and 255.");
   while (green <= 0 || green > 256) {
-  var green = parseInt(prompt('Try again. Make sure you enter an integer between 0 and 255'))
+    green = parseInt(
+      prompt(
+        "Try again. Make sure you enter an integer between 0 and 255 for the green value."
+      )
+    );
   }
-}
-var blue = parseInt(prompt('What is your blue value for your RGB color?'));
-if (blue >= 0 && blue < 256) {
-  ;
-} else {
+};
+getGreen();
+
+var getBlue = () => {
+  blue = parseInt(prompt("What is your blue value for your RGB color?"));
+  if (!(blue >= 0 && blue < 256)) return alert("Your integer needs to be between 0 and 255.");
   while (blue <= 0 || blue > 256) {
-  var blue = parseInt(prompt('Try again. Make sure you enter an integer between 0 and 255'))
+    blue = parseInt(
+      prompt(
+        "Try again. Make sure you enter an integer between 0 and 255 for the blue value."
+      )
+    );
   }
-}
+};
+getBlue();
+
+// var green = parseInt(prompt('What is your green value for your RGB color?'));
+// // if (green >= 0 && green <= 255) return;
+// while (green <= 0 || green > 256) {
+//   var green = parseInt(
+//     prompt("Try again. Make sure you enter an integer between 0 and 255")
+//   );
+// }
+// var blue = parseInt(prompt('What is your blue value for your RGB color?'));
+// if (blue >= 0 && blue < 256) {
+//   ;
+// } else {
+//   while (blue <= 0 || blue > 256) {
+//   var blue = parseInt(prompt('Try again. Make sure you enter an integer between 0 and 255'))
+//   }
+// }
 
 
 //functions
 
-function baseColor() {
+var baseColor = () => {
  var color = 'rgb(';
   color += red + ',';
   color += green + ',';
@@ -38,11 +71,11 @@ function baseColor() {
   return color;
 }
 
-function print( message ) {
-  document.write( message );
+var print = (message) => {
+  document.write(message);
 }
 
-function printRGB() {
+var printRGB = () => {
   print( '<p>RGB: ' + red + ', ' + green + ', ' + blue + '<br></p>' );
 }
 

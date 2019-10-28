@@ -64,13 +64,15 @@ p {
 input {
   font-family: 'Muli';
   font-weight: 800;
+  text-align: center;
   display: inline-block;
   border-width: 0pt;
   background-color: #DDD;
   color: #555;
   margin-bottom: 5px;
-  border-radius: .75em;
-  padding: .25em;
+  border-radius: 2em;
+  padding: .5em;
+  size: 15em;
 }
 
 button {

@@ -64,6 +64,7 @@ p {
 input {
   font-family: 'Muli';
   font-weight: 800;
+  width: 200px;
   text-align: center;
   display: inline-block;
   border-width: 0pt;
@@ -139,4 +140,31 @@ footer {
 .error {
   border: solid 2px red;
   border-radius: .75em;
+}
+
+@media screen and (max-width: 992px) {
+  h1 {
+    font-size: 6em;
+    margin: 60px 0 40px;
+  }
+  
+  input {
+    width: 70%;
+    height: 5%;
+    font-size: 3rem;
+  }
+
+  button {
+    font-size: 3rem;
+    width: 70%;
+    height: 100px;
+  }
+
+  h2 {
+    font-size: 3.5rem;
+  }
+
+  .footer {
+    font-size: 3rem;
+  }
 }

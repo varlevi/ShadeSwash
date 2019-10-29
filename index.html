@@ -25,7 +25,30 @@
   <div id="add-js">
 
   </div>
+  
   <script src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.1/lib/darkmode-js.min.js"></script>
+  <script>
+  //This uses the cdn above and calls Dark mode and shows widget
+  new Darkmode().showWidget();
+  //These are all you widget options
+  var options = {
+  bottom: '64px', // default: '32px'
+  right: 'unset', // default: '32px'
+  left: '32px', // default: 'unset'
+  time: '0.5s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: false, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+  }
+  const darkmode = new Darkmode(options);
+  darkmode.showWidget();
+
+</script>
   <footer>
   <p class="footer">Copyright &copy 2019 varlevi</p>
 </footer>

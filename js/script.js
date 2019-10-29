@@ -51,7 +51,7 @@ document.getElementsByClassName('submit')[0].addEventListener('click', (event) =
 
   //Initial Color Print
   rgbColor = baseColor();
-  html = `<div style="background-color: ${rgbColor}"></div>`
+  html = `<div style="background-color: ${rgbColor}" class="darkmode-ignore"></div>`
 
   print( '<h3>Base Color: <br></h3>' );
   print( ' </br>' );
@@ -76,7 +76,7 @@ document.getElementsByClassName('submit')[0].addEventListener('click', (event) =
   while (red < 256 && green < 256 && blue < 256) {
 
     rgbColor = baseColor();
-    html = '<div style="background-color:' + rgbColor + '"></div>';
+    html = `<div style="background-color: ${rgbColor}" class="darkmode-ignore"></div>`
 
     print( ' </br>' );
     printRGB();
@@ -93,3 +93,4 @@ document.getElementsByClassName('submit')[0].addEventListener('click', (event) =
 
 
 });
+

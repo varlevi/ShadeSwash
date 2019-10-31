@@ -1,4 +1,4 @@
-# the_shade_generator
+# The Shade Generator
 
 ![generator_image](readme-images/shade_generator_social_preview_3.png)
 

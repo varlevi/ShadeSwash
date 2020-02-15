@@ -1,11 +1,11 @@
-@import url('http://necolas.github.io/normalize.css/3.0.2/normalize.css');
+@import url('https://necolas.github.io/normalize.css/3.0.2/normalize.css');
 
 /*General*/
 body {
   margin: 0;
   padding: 0 2%;
   font: 'Muli', 'Helvetica Neue', 'Helvectica', 'Arial', serif;
-  font-weight: 300;
+  font-weight: 100;
   font-size: 1em;
   line-height: 1.5em;
   color: #8d9aa5;
@@ -14,10 +14,10 @@ body {
 
 
 h1, h2, h3 {
-  font-weight: 400;
+  font-weight: 100;
   color: #384047;
   line-height: 1.5em;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Muli', cursive;
 }
 
 h1 {
@@ -38,14 +38,14 @@ h2 {
 
 h3 {
   font-size: 2em;
-  font-weight: 300;
+  font-weight: 100;
   margin: 0;
   padding-top: 5%;
 }
 
 h3 em {
   font-style: normal;
-  font-weight: 300;
+  font-weight: 100;
   margin: 0 0 10px 5px;
   padding: 0;
   color: #8d9aa5;
@@ -58,7 +58,7 @@ p {
   border-bottom-color: auto;
   padding-bottom: 3px;
   line-height: 1.5em;
-  font-family: 'Damion';
+  font-family: 'Muli';
 }
 
 input {
@@ -91,15 +91,16 @@ button {
 button:hover,
 button:focus {
   outline: none;
-  box-shadow: 0 2px 12px 0 rgba(0, 5, 5, 0.34), 0 2px 20px 0 rgba(0, 5, 5, 0.29);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 input:focus {
   outline-width: 0;
-  box-shadow: 0 0 2pt 1pt #555;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
-#add-js div {
+.colors {
+  transition: border-radius 0.5s ease;
   width: 100px;
   height: 100px;
   display: inline-block;
@@ -107,10 +108,21 @@ input:focus {
   margin: 15px;
 }
 
-#add-js div:hover {
+.colors:hover {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   border-color: black;
-  border: solid 3.5px;
   border-radius: 25% 15%;
+}
+
+.card {
+  display: inline-block;
+  padding: 30px;
+  margin: 5rem;
+  border-radius: 5%;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 span {
@@ -122,24 +134,14 @@ footer {
   margin-top: 2.5%;
 }
 
-.colors {
-  columns: 2;
-  column-rule: auto;
-}
-
-.base_color {
-  column-span: all;
-}
-
 .footer {
   border-bottom: none;
   font-size: 1em;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Muli', cursive;
 }
 
 .error {
   border: solid 2px red;
-  border-radius: .75em;
 }
 
 @media screen and (max-width: 600px) {
@@ -147,7 +149,7 @@ footer {
     font-size: 3em;
     margin: 60px 0 40px;
   }
-  
+
   input {
     width: 80%;
     height: 25px;

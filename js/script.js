@@ -46,18 +46,16 @@ document.getElementsByClassName('submit')[0].addEventListener('click', (event) =
   }
 
   var printRGB = () => {
-    print( '<p>RGB: ' + red + ', ' + green + ', ' + blue + '<br></p>' );
+    print( '<p>rgb(' + red + ', ' + green + ', ' + blue + ')<br></p>' );
   }
 
   //Initial Color Print
   rgbColor = baseColor();
-  html = `<div style="background-color: ${rgbColor}" class="darkmode-ignore"></div>`
+  html = `<div style="background-color: ${rgbColor}" class="darkmode-ignore colors"></div>`
 
+  print('<h2>Here are your results:</h2>');
   print( '<h3>Base Color: <br></h3>' );
-  print( ' </br>' );
-  printRGB();
-  print( ' </br>' );
-  print( html );
+  print( `<section class="card"></br> <p>rgb(${red}, ${green}, ${blue})</p> </br> ${html} </br></section>` );
   for (i = 0; i < 5; i += 1) {
     print( ' </br>' );
   }
@@ -71,18 +69,14 @@ document.getElementsByClassName('submit')[0].addEventListener('click', (event) =
   }
 
   //Prints all Shades
-  print( '<h3>Shades: <br></h3><section class="colors">' );
+  print( '<h3>Shades: <br></h3><section class="colors-div">' );
 
   while (red < 256 && green < 256 && blue < 256) {
 
     rgbColor = baseColor();
-    html = `<div style="background-color: ${rgbColor}" class="darkmode-ignore"></div>`
+    html = `<div style="background-color: ${rgbColor}" class="darkmode-ignore colors"></div>`
 
-    print( ' </br>' );
-    printRGB();
-    print( ' </br>' );
-    print( html );
-    print( ' </br>' );
+    print( `<section class="card"></br> <p>rgb(${red}, ${green}, ${blue})</p> </br> ${html} </br></section>` );
 
     red += 2;
     blue += 2;
@@ -91,6 +85,4 @@ document.getElementsByClassName('submit')[0].addEventListener('click', (event) =
 
   print('</section>');
 
-
 });
-

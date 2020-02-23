@@ -3,11 +3,10 @@
  * @param  {Array<String>} colors ['red', 'green', 'blue']
  * @return {Array<Number>} Array of user input RGB values for each color
  */
-const getRGBValues = colors => {
-    return colors.map(color => {
+const getRGBValues = colors =>
+    colors.map(color => {
         return parseInt(document.getElementsByClassName(color)[0].value, 10);
     });
-};
 
 /**
  * Validate if user input is valid RGB value
@@ -21,14 +20,18 @@ const isValid = value => !isNaN(value) && value < 256 && value >= 0;
  * depending on user input validity
  * @param {Array<String>} colors ['red', 'green', 'blue']
  * @param {Array<Number>} values [Number, Number, Number]
- * @return void
+ * @return {Boolean} All user input values validity
  */
 const valuesValidators = (colors, values) => {
-    colors.forEach((color, index) => {
+    const allValid = colors.every((color, index) => {
         const element = document.getElementsByClassName(color)[0].classList;
         element.remove("error");
-        !isValid(values[index]) && element.add("error");
+        const validColorValue = isValid(values[index]);
+        !validColorValue && element.add("error");
+        return validColorValue;
     });
+
+    return allValid;
 };
 
 /**
@@ -39,12 +42,12 @@ const valuesValidators = (colors, values) => {
 const baseColor = ({ red, green, blue }) => `rgb(${red}, ${green}, ${blue})`;
 
 /**
- * Display alert prompt if user RGB is not valid
+ * Display alert prompt if user RGB is not valid & reset content
  * @return void
  */
 const showAlert = () => {
     const hasErrors = document.getElementsByClassName("error").length;
-    hasErrors &&
+    hasErrorsi &&
         alert(
             "Make sure all color inputs are valid numbers between 0 and 255."
         );
@@ -100,13 +103,19 @@ document.getElementById("submit").addEventListener("click", event => {
     // reset shades
     setContent();
 
+    // Get user input for RGB values
     let content = "";
     const colors = ["red", "green", "blue"];
     const values = getRGBValues(colors);
     let [red, green, blue] = values;
 
-    valuesValidators(colors, values);
-    showAlert();
+    // User input validation
+    const allValid = valuesValidators(colors, values);
+    if (!allValid) {
+        showAlert();
+        setContent();
+        return;
+    }
 
     // Base Card
     content += addTitle("base");

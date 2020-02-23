@@ -1,4 +1,12 @@
 /**
+ * Convert RGB to hexcode string
+ * @param {Object} {red: Number, green: Number, blue: Number}
+ * @return {String} hexcode from provided RGB values
+ */
+const rgbToHex = ({ red, green, blue }) =>
+    (blue | (green << 8) | (red << 16) | (1 << 24)).toString(16).slice(1);
+
+/**
  * Retrieve user's input value for each rgb color
  * @param  {Array<String>} colors ['red', 'green', 'blue']
  * @return {Array<Number>} Array of user input RGB values for each color
@@ -81,14 +89,19 @@ const addTitle = type => {
 /**
  * Create a Card Element
  * @param {Object} { red: Number, green: Number, blue: Number }
+ * @param {Boolean} center Adds a "card-center" class if true
  * @return {String<HTML>} Card Element
  */
-const addCard = ({ red, green, blue }) => {
+const addCard = ({ red, green, blue }, center = false) => {
     const rgbColor = baseColor({ red, green, blue });
+    const hexCode = rgbToHex({ red, green, blue });
 
     return `
-        <section class="card">
-            <p>${rgbColor}</p>
+        <section class="card${(center && " card-center") || ""}">
+            <div class="card-text">
+                <p>${rgbColor}</p>
+                <p>#${hexCode}</p>
+            </div>
             <div>
                 <div 
                     style="background-color: ${rgbColor}" 
@@ -119,10 +132,11 @@ document.getElementById("submit").addEventListener("click", event => {
 
     // Base Card
     content += addTitle("base");
-    content += addCard({ red, green, blue });
+    content += addCard({ red, green, blue }, true);
 
     // Shades Cards Title
     content += addTitle("shade");
+    content += `<div class="cards">`;
 
     // Sets color to the darkest Shade
     while (red > 0 && green > 0 && blue > 0) {
@@ -141,5 +155,6 @@ document.getElementById("submit").addEventListener("click", event => {
     }
 
     // Display all content in root div
+    content += `</div>`;
     setContent(content);
 });

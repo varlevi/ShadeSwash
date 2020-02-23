@@ -60,11 +60,21 @@ const showAlert = () => {
         );
 };
 
-
-const printContent = content => {
+/**
+ * Set/Update root div depending on content
+ * Remove dynamically generated style element
+ * @param {String<HTML> | undefined} content
+ * @return void
+ */
+const setContent = content => {
     const rootDiv = document.getElementById("add-js");
+    const styles = document.head.getElementsByTagName("style");
+
     if (content) rootDiv.innerHTML += `${content}`;
-    else rootDiv.innerHTML = "";
+    else {
+        rootDiv.innerHTML = "";
+        styles.length && document.head.removeChild(styles[0]);
+    }
 };
 
 /**
@@ -107,9 +117,42 @@ const addCard = ({ red, green, blue }, center = false) => {
     `;
 };
 
-document.getElementById("submit").addEventListener("click", event => {
-    // reset shades
-    printContent();
+/**
+ * Apply dynamic styling to scrollbar
+ * return void
+ */
+const styleScrollBar = () => {
+    const colors = document.getElementsByClassName("colors");
+    const startColor = colors[0].style.backgroundColor;
+    const endColor = colors[colors.length - 1].style.backgroundColor;
+    const styleTag = document.createElement("style");
+
+    const trackStyle = `
+        :root {
+            scrollbar-color: ${startColor} ${endColor};
+        }
+
+        body::-webkit-scrollbar-track {
+            background: linear-gradient(0deg, ${endColor} 0%, ${startColor} 100%);
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: linear-gradient(0deg, ${endColor} 0%, ${startColor} 100%);
+        }
+
+    `;
+
+    styleTag.innerHTML = trackStyle;
+    document.head.insertAdjacentElement("beforeend", styleTag);
+};
+
+/**
+ * Generate page template with shades and scrollbar styles
+ * return void
+ */
+const pageGenerator = () => {
+    // reset shades & scrollbar styles
+    setContent();
 
     // Get user input for RGB values
     let content = "";
@@ -119,8 +162,8 @@ document.getElementById("submit").addEventListener("click", event => {
 
     const allValid = valuesValidators(colors, values);
     if (!allValid) {
+        setContent();
         showAlert();
-        printContent();
         return;
     }
 
@@ -148,8 +191,10 @@ document.getElementById("submit").addEventListener("click", event => {
         blue += 2;
     }
 
-    // Display all content in root div
+    // Render all content/styles
     content += `</div>`;
-    printContent(content);
-});
+    setContent(content);
+    styleScrollBar();
+};
 
+document.getElementById("submit").addEventListener("click", pageGenerator);

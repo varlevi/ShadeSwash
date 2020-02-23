@@ -165,6 +165,12 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   h1 {
     font-size: 3em;
     margin: 60px 0 40px;
@@ -192,7 +198,17 @@ footer {
   }
 }
 
+@media screen and (max-width: 825px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media screen and (max-width: 1025px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   h1 {
     font-size: 5em;
   }

@@ -1,88 +1,100 @@
-document.getElementsByClassName('submit')[0].addEventListener('click', (event) => {
+const getRGBValues = colors => {
+    return colors.map(color => {
+        return parseInt(document.getElementsByClassName(color)[0].value, 10);
+    });
+};
 
-  //removes any previously generated shade Sets
+const isValid = value => !isNaN(value) && value < 256 && value >= 0;
 
-  let addJs = document.getElementById("add-js");
-  while (addJs.hasChildNodes()) {
-    addJs.removeChild(addJs.firstChild);
-  }
+const valuesValidators = (colors, values) => {
+    colors.forEach((color, index) => {
+        const element = document.getElementsByClassName(color)[0].classList;
+        element.remove("error");
+        !isValid(values[index]) && element.add("error");
+    });
+};
 
-  //get color values
-  let red = document.getElementsByClassName('red')[0].value;
-  let green = document.getElementsByClassName('green')[0].value;
-  let blue = document.getElementsByClassName('blue')[0].value;
+const baseColor = ({ red, blue, green }) => {
+    return `rgb(${red}, ${green}, ${blue})`;
+};
 
-  //check for valid values
-  if (isNaN(red) || red > 256 || red < 0) {
-    document.getElementsByClassName("red")[0].classList.add('error');
-  } else {
-    document.getElementsByClassName("red")[0].classList.remove('error');
-  }
-  if (isNaN(green) || green > 256 || green < 0) {
-    document.getElementsByClassName("green")[0].classList.add('error');
-  } else {
-    document.getElementsByClassName("green")[0].classList.remove('error');
-  }
-  if (isNaN(blue) || blue > 256 || blue < 0) {
-    document.getElementsByClassName("blue")[0].classList.add('error');
-  } else {
-    document.getElementsByClassName("blue")[0].classList.remove('error');
-  }
-  if (isNaN(blue) || blue > 256 || blue < 0 || isNaN(green) || green > 256 || green < 0 || isNaN(red) || red > 256 || red < 0) {
-    alert("Make sure all color inputs are valid numbers between 0 and 255.");
-  }
+const showAlert = () => {
+    const hasErrors = document.getElementsByClassName("error").length;
+    return (
+        hasErrors &&
+        alert("Make sure all color inputs are valid numbers between 0 and 255.")
+    );
+};
 
-  //functions
-  var baseColor = () => {
-   var color = 'rgb(';
-    color += red + ',';
-    color += green + ',';
-    color += blue + ')';
-    return color;
-  }
+const resetShades = () => {
+    const addJs = document.getElementById("add-js");
+    while (addJs.hasChildNodes()) {
+        addJs.removeChild(addJs.firstChild);
+    }
+};
 
-  var print = (message) => {
-    document.getElementById("add-js").innerHTML += `${message}`;
-  }
+const printContent = content => {
+    document.getElementById("add-js").innerHTML += `${content}`;
+};
 
-  var printRGB = () => {
-    print( '<p>rgb(' + red + ', ' + green + ', ' + blue + ')<br></p>' );
-  }
+const addTitle = (type = "base") => {
+    const title = {
+        base: `<h2>Here are your results:</h2><h3>Base Color:</h3>`,
+        shade: `<h3>Shades:</h3>`
+    };
 
-  //Initial Color Print
-  rgbColor = baseColor();
-  html = `<div style="background-color: ${rgbColor}" class="darkmode-ignore colors"></div>`
+    return title[type];
+};
 
-  print('<h2>Here are your results:</h2>');
-  print( '<h3>Base Color: <br></h3>' );
-  print( `<section class="card"></br> <p>rgb(${red}, ${green}, ${blue})</p> </br> ${html} </br></section>` );
-  for (i = 0; i < 5; i += 1) {
-    print( ' </br>' );
-  }
+const addCard = ({ red, green, blue }) => {
+    const rgbColor = baseColor({ red, green, blue });
 
-  //Sets color to the darkest Shade
+    return `
+        <section class="card">
+            <p>rgb(${red}, ${green}, ${blue})</p>
+            <div>
+                <div 
+                    style="background-color: ${rgbColor}" 
+                    class="darkmode-ignore colors"
+                />
+            </div>
+        </section>
+    `;
+};
 
-  while ( red > 0 && green > 0 && blue > 0 ) {
-    red -= 1;
-    green -= 1;
-    blue -= 1;
-  }
+document.getElementById("submit").addEventListener("click", event => {
+    //removes any previously generated shade Sets
+    resetShades();
 
-  //Prints all Shades
-  print( '<h3>Shades: <br></h3><section class="colors-div">' );
+    let content = "";
+    const colors = ["red", "blue", "green"];
+    const values = getRGBValues(colors);
+    let [red, green, blue] = values;
 
-  while (red < 256 && green < 256 && blue < 256) {
+    valuesValidators(colors, values);
+    showAlert();
 
-    rgbColor = baseColor();
-    html = `<div style="background-color: ${rgbColor}" class="darkmode-ignore colors"></div>`
+    //Initial Color Print
+    content += addTitle("base");
+    content += addCard({ red, green, blue });
+    content += addTitle("shade");
 
-    print( `<section class="card"></br> <p>rgb(${red}, ${green}, ${blue})</p> </br> ${html} </br></section>` );
+    //Sets color to the darkest Shade
+    while (red > 0 && green > 0 && blue > 0) {
+        red--;
+        green--;
+        blue--;
+    }
 
-    red += 2;
-    blue += 2;
-    green += 2;
-  }
+    //Prints all Shades
 
-  print('</section>');
+    while (red < 256 && green < 256 && blue < 256) {
+        content += addCard({ red, green, blue });
 
+        red += 2;
+        blue += 2;
+        green += 2;
+    }
+
+    printContent(content);
 });

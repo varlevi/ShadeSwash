@@ -55,7 +55,7 @@ const baseColor = ({ red, green, blue }) => `rgb(${red}, ${green}, ${blue})`;
  */
 const showAlert = () => {
     const hasErrors = document.getElementsByClassName("error").length;
-    hasErrorsi &&
+    hasErrors &&
         alert(
             "Make sure all color inputs are valid numbers between 0 and 255."
         );
@@ -158,3 +158,4 @@ document.getElementById("submit").addEventListener("click", event => {
     content += `</div>`;
     setContent(content);
 });
+

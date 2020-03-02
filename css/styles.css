@@ -104,7 +104,7 @@ input:focus {
   width: 100px;
   height: 100px;
   border-radius: 15% 25%;
-  margin: 15px;
+  margin: 15px auto;
 }
 
 .colors:hover {

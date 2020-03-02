@@ -7,11 +7,15 @@ const getRGBValues = colors => {
 const isValid = value => !isNaN(value) && value < 256 && value >= 0;
 
 const valuesValidators = (colors, values) => {
-    colors.forEach((color, index) => {
+    const allValid = colors.every((color, index) => {
         const element = document.getElementsByClassName(color)[0].classList;
         element.remove("error");
-        !isValid(values[index]) && element.add("error");
+        const validColorValue = isValid(values[index]);
+        !validColorValue && element.add("error");
+        return validColorValue;
     });
+
+    return allValid;
 };
 
 const baseColor = ({ red, blue, green }) => {
@@ -34,7 +38,9 @@ const resetShades = () => {
 };
 
 const printContent = content => {
-    document.getElementById("add-js").innerHTML += `${content}`;
+    const rootDiv = document.getElementById("add-js");
+    if (content) rootDiv.innerHTML += `${content}`;
+    else rootDiv.innerHTML = "";
 };
 
 const addTitle = (type = "base") => {
@@ -67,12 +73,16 @@ document.getElementById("submit").addEventListener("click", event => {
     resetShades();
 
     let content = "";
-    const colors = ["red", "blue", "green"];
+    const colors = ["red", "green", "blue"];
     const values = getRGBValues(colors);
     let [red, green, blue] = values;
 
-    valuesValidators(colors, values);
-    showAlert();
+    const allValid = valuesValidators(colors, values);
+    if (!allValid) {
+        showAlert();
+        printContent();
+        return;
+    }
 
     //Initial Color Print
     content += addTitle("base");

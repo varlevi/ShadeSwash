@@ -38,7 +38,6 @@ const valuesValidators = (colors, values) => {
         !validColorValue && element.add("error");
         return validColorValue;
     });
-
     return allValid;
 };
 
@@ -61,12 +60,8 @@ const showAlert = () => {
         );
 };
 
-/**
- * Set/Update root div depending on content
- * @param {String<HTML> | undefined} content
- * @return void
- */
-const setContent = content => {
+
+const printContent = content => {
     const rootDiv = document.getElementById("add-js");
     if (content) rootDiv.innerHTML += `${content}`;
     else rootDiv.innerHTML = "";
@@ -122,11 +117,10 @@ document.getElementById("submit").addEventListener("click", event => {
     const values = getRGBValues(colors);
     let [red, green, blue] = values;
 
-    // User input validation
     const allValid = valuesValidators(colors, values);
     if (!allValid) {
         showAlert();
-        setContent();
+        printContent();
         return;
     }
 

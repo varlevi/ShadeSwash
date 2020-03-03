@@ -10,7 +10,7 @@ body {
   line-height: 1.5em;
   color: #8d9aa5;
   text-align: center;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 
@@ -115,7 +115,7 @@ input:focus {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   margin: 4.5rem;
   margin-bottom: 1.25rem;
   text-align: center;
@@ -166,7 +166,7 @@ footer {
   border: solid 2px red;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
   .cards {
     display: flex;
     flex-direction: column;
@@ -222,7 +222,7 @@ footer {
   }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1260px) {
   .cards {
     grid-template-columns: repeat(3, 1fr);
     text-align: center;

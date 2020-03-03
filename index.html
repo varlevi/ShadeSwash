@@ -2,65 +2,51 @@
 <html lang="en">
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158580752-1"></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158580752-1"></script>
+    <script>
+       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
       gtag('config', 'UA-158580752-1');
-  </script>
+    </script>
 
   <meta charset="UTF-8">
   <title>The Shade Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="uJ7ANYIN_7WPKMkuiBUicYNK0atfdAmAsjU0_KUC538" />
-  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+  <meta name="description" content="Never waste time trying to find the right shade of a color again. With the Shade Generator for web designers and developers, every shade you'll ever need is just a click away.">
   <link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-</head>
 
+</head>
 <body>
+<div id="wrapper">
   <div id="intro">
     <h1>Welcome to The Shade Generator!</h1>
 
-    <input type="number"  max="255" min="0"class="red" placeholder="Red Value">
+    <input type="number"  max="255" min="0"class="red" placeholder="Red Value"></input>
     <br>
-    <input type="number" max="255" min="0" class="green" placeholder="Green Value">
+    <input type="number" max="255" min="0" class="green" placeholder="Green Value"></input>
     <br>
-    <input type="number" max="255" min="0" class="blue" placeholder="Blue Value">
+    <input type="number" max="255" min="0" class="blue" placeholder="Blue Value"></input>
     <br>
-    <button type="button" id="submit">Generate!</button>
+    <button type="button" class="submit">Generate!</button>
   </div>
 
-  <div id="add-js"></div>
+  <div id="add-js">
 
-  <script src="js/script.js" />
-  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.1/lib/darkmode-js.min.js" />
-  <script>
-      //This uses the cdn above and calls Dark mode and shows widget
-      new Darkmode().showWidget();
-      //These are all you widget options
-      var options = {
-          bottom: '64px', // default: '32px'
-          right: 'unset', // default: '32px'
-          left: '32px', // default: 'unset'
-          time: '0.5s', // default: '0.3s'
-          mixColor: '#fff', // default: '#fff'
-          backgroundColor: '#fff',  // default: '#fff'
-          buttonColorDark: '#100f2c',  // default: '#100f2c'
-          buttonColorLight: '#fff', // default: '#fff'
-          saveInCookies: false, // default: true,
-          label: '🌓', // default: ''
-          autoMatchOsTheme: true // default: true
-      }
+  </div>
 
-      const darkmode = new Darkmode(options);
-      darkmode.showWidget();
-  </script>
+  <img src="icons/menu.svg" alt="menu" id="menu-button" class="button"></img>
+  <img src="icons/moon.svg" alt="darkmode" id="dark-button" class="button"></img>
+  <img src="icons/github.svg" alt="github" id="github-button" class="button"></img>
+
+  <script src="js/script.js"></script>
 
   <footer>
-    <p class="footer">Copyright &copy 2020 varlevi</p>
+  <p class="footer">Copyright &copy 2019 varlevi</p>
   </footer>
+</div>
 </body>
 </html>

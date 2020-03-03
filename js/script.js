@@ -109,7 +109,7 @@ const addCard = ({ red, green, blue }, center = false) => {
 
 document.getElementById("submit").addEventListener("click", event => {
     // reset shades
-    setContent();
+    printContent();
 
     // Get user input for RGB values
     let content = "";
@@ -150,6 +150,6 @@ document.getElementById("submit").addEventListener("click", event => {
 
     // Display all content in root div
     content += `</div>`;
-    setContent(content);
+    printContent(content);
 });
 

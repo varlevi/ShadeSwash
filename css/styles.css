@@ -149,7 +149,6 @@ footer {
 .button {
   width: 50px;
   height: 50px;
-  background-color: #222;
   border-radius: 50%;
   transition: all 0.5s ease-in-out;
 
@@ -186,6 +185,10 @@ footer {
 
 #menu-button:hover {
    transform: scale(1.2);
+}
+
+#add-js {
+ margin: 0px 4rem;
 }
 
 @media screen and (max-width: 600px) {

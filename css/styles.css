@@ -178,6 +178,13 @@ footer {
   display: 'none';
 }
 
+#attribution-button {
+  left: 30px;
+  bottom: 240px;
+  opacity: 0.0;
+  display: none;
+}
+
 #menu-button {
    left: 30px;
    bottom: 30px;

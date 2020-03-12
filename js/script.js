@@ -95,7 +95,9 @@ let menuState = false;
 let darkButton = document.getElementById('dark-button');
 darkModeState = false;
 let githubButton = document.getElementById('github-button');
-githubModeState = false;
+githubState = false;
+let attributionButton = document.getElementById('attribution-button');
+attributionState = false;
 
 menuButton.addEventListener('click', () => {
   menuState = !menuState;
@@ -146,4 +148,11 @@ darkButton.addEventListener('click', () => {
 
 githubButton.addEventListener('click', () => {
   window.location.href = 'https://github.com/varlevi/the_shade_generator';
+})
+
+attributionButton.addEventListener('click', () => {
+  attributionState = !attributionState;
+  if (attributionState == true) {
+    
+  }
 })

@@ -105,14 +105,18 @@ menuButton.addEventListener('click', () => {
     menuButton.style.transform = "scale(1.2)";
     githubButton.style.display = "block";
     darkButton.style.display = "block";
+    attributionButton.style.display = "block";
     githubButton.style.opacity = "1.0";
     darkButton.style.opacity = "1.0";
+    attributionButton.style.opacity = "1.0";
   } else {
     menuButton.style.transform = "scale(1)";
     githubButton.style.display = "none";
     darkButton.style.display = "none";
+    attributionButton.style.display = "none";
     githubButton.style.opacity = "0.0";
     darkButton.style.opacity = "0.0";
+    attributionButton.style.opacity = "0.0";
   }
 })
 
@@ -153,6 +157,6 @@ githubButton.addEventListener('click', () => {
 attributionButton.addEventListener('click', () => {
   attributionState = !attributionState;
   if (attributionState == true) {
-    
+    alert("Yay!");
   }
 })

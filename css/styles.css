@@ -182,7 +182,7 @@ footer {
   left: 30px;
   bottom: 240px;
   opacity: 0.0;
-  display: none;
+  display: 'none';
 }
 
 #menu-button {

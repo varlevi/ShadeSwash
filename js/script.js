@@ -96,8 +96,8 @@ let darkButton = document.getElementById('dark-button');
 darkModeState = false;
 let githubButton = document.getElementById('github-button');
 githubState = false;
-let attributionButton = document.getElementById('attribution-button');
-attributionState = false;
+let aboutButton = document.getElementById('about-button');
+aboutState = false;
 
 menuButton.addEventListener('click', () => {
   menuState = !menuState;
@@ -105,18 +105,18 @@ menuButton.addEventListener('click', () => {
     menuButton.style.transform = "scale(1.2)";
     githubButton.style.display = "block";
     darkButton.style.display = "block";
-    attributionButton.style.display = "block";
+    aboutButton.style.display = "block";
     githubButton.style.opacity = "1.0";
     darkButton.style.opacity = "1.0";
-    attributionButton.style.opacity = "1.0";
+    aboutButton.style.opacity = "1.0";
   } else {
     menuButton.style.transform = "scale(1)";
     githubButton.style.display = "none";
     darkButton.style.display = "none";
-    attributionButton.style.display = "none";
+    aboutButton.style.display = "none";
     githubButton.style.opacity = "0.0";
     darkButton.style.opacity = "0.0";
-    attributionButton.style.opacity = "0.0";
+    aboutButton.style.opacity = "0.0";
   }
 })
 
@@ -131,6 +131,7 @@ darkButton.addEventListener('click', () => {
     githubButton.src = "icons/github-white.svg";
     menuButton.src = "icons/menu-white.svg";
     darkButton.src = "icons/moon-white.svg";
+    aboutButton.src = "icons/github-white.svg";
     for (i of h3) {
       i.style.color = '#DDD';
     }
@@ -154,9 +155,21 @@ githubButton.addEventListener('click', () => {
   window.location.href = 'https://github.com/varlevi/the_shade_generator';
 })
 
-attributionButton.addEventListener('click', () => {
-  attributionState = !attributionState;
-  if (attributionState == true) {
-    alert("Yay!");
+function newModal(title, content) {
+  if (aboutState == true) {
+    let modalBackground = document.createElement('DIV');
+    let modal = document.createElement('DIV');
+    modal.innerHTML += `<h3>${title}</h3>`;
+    modal.innerHTML += content;
+    modal.classList += "js-modal";
+    document.body.appendChild(modalBackground);
+    modalBackground.appendChild(modal);
+  } else {
+    document.getElementsByClassName('js-modal')[0].remove();
   }
+}
+
+aboutButton.addEventListener('click', () => {
+  aboutState = !aboutState;
+  newModal('About', `<h4>Project Info</h4><p>The Shade Generator was created in 2019 and is maintained by varlevi in order to provide developers and designers with a simple no-frills tool for finding color shades.</p><h4>Other Projects by varlevi</h4><a href="https://colorbynumber.netlify.com/">Color By Number Mosaics</a></br><a href="https://physicscalculator.netlify.com">Simple Physics Calculator</a><h4>Attributions</h4><p>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>`);
 })

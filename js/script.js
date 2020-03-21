@@ -131,7 +131,7 @@ darkButton.addEventListener('click', () => {
     githubButton.src = "icons/github-white.svg";
     menuButton.src = "icons/menu-white.svg";
     darkButton.src = "icons/moon-white.svg";
-    aboutButton.src = "icons/github-white.svg";
+    aboutButton.src = "icons/info-white.svg";
     for (i of h3) {
       i.style.color = '#DDD';
     }
@@ -142,6 +142,7 @@ darkButton.addEventListener('click', () => {
     githubButton.src = "icons/github.svg";
     menuButton.src = "icons/menu.svg";
     darkButton.src = "icons/moon.svg";
+    aboutButton.src = "icons/info.svg";
     for (i of buttons) {
       i.style.color = '#222';
     }

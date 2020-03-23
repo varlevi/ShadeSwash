@@ -107,7 +107,7 @@ const addCard = ({ red, green, blue }, center = false) => {
     `;
 };
 
-document.getElementById("submit").addEventListener("click", event => {
+const generateShades = () => {
     // reset shades
     printContent();
 
@@ -153,5 +153,15 @@ document.getElementById("submit").addEventListener("click", event => {
     // Display all content in root div
     content += `</div>`;
     printContent(content);
+}
+
+document.addEventListener('keypress', event => {
+    if (event.keyCode === 13) {
+        generateShades();
+    }
+})
+
+document.getElementById("submit").addEventListener("click", event => {
+    generateShades();
 });
 

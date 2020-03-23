@@ -63,7 +63,7 @@ p {
 
 input {
   font-family: 'Muli';
-  font-weight: 800;
+  font-weight: 400;
   width: 200px;
   text-align: center;
   display: inline-block;
@@ -143,10 +143,27 @@ footer {
   border: solid 2px red;
 }
 
+/*Main Logo*/
+
+.main-logo-div {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-text {
+  color: #222;
+  align-self: center;
+  border: none;
+  font-weight: 400;
+  padding: 0;
+}
+
 .shade-generator-icon {
-  width: 100px;
+  display: inline-block;
   height: 100px;
-  margin-top: 60px;
+  margin: 45px 15px 45px 0;
+  padding-right: 15px;
+  border-right: 3px solid #222;
 }
 
 @media screen and (max-width: 600px) {

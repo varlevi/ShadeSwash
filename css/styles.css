@@ -135,11 +135,6 @@ input:focus {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
-.card-center {
-  margin: 0 auto;
-  width: 375px;
-}
-
 .card-text {
   display: flex;
   flex-direction: column;

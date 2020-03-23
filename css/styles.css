@@ -143,6 +143,12 @@ footer {
   border: solid 2px red;
 }
 
+.shade-generator-icon {
+  width: 100px;
+  height: 100px;
+  margin-top: 60px;
+}
+
 @media screen and (max-width: 600px) {
   h1 {
     font-size: 3em;

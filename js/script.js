@@ -92,7 +92,7 @@ const addCard = ({ red, green, blue }, center = false) => {
     const hexCode = rgbToHex({ red, green, blue });
 
     return `
-        <section class="card${(center && " card-center") || ""}">
+        <section class="card">
             <div class="card-text">
                 <p>${rgbColor}</p>
                 <p>#${hexCode}</p>
@@ -107,7 +107,7 @@ const addCard = ({ red, green, blue }, center = false) => {
     `;
 };
 
-document.getElementById("submit").addEventListener("click", event => {
+const generateShades = () => {
     // reset shades
     printContent();
 
@@ -125,8 +125,10 @@ document.getElementById("submit").addEventListener("click", event => {
     }
 
     // Base Card
+    content += `<div class="cards">`;
     content += addTitle("base");
-    content += addCard({ red, green, blue }, true);
+    content += addCard({ red, green, blue });
+    content += `</div>`;
 
     // Shades Cards Title
     content += addTitle("shade");
@@ -151,5 +153,15 @@ document.getElementById("submit").addEventListener("click", event => {
     // Display all content in root div
     content += `</div>`;
     printContent(content);
+}
+
+document.addEventListener('keypress', event => {
+    if (event.keyCode === 13) {
+        generateShades();
+    }
+})
+
+document.getElementById("submit").addEventListener("click", event => {
+    generateShades();
 });
 

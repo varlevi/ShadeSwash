@@ -125,8 +125,8 @@ const generateShades = () => {
     }
 
     // Base Card
-    content += `<div class="cards">`;
     content += addTitle("base");
+    content += `<div class="cards">`;
     content += addCard({ red, green, blue });
     content += `</div>`;
 

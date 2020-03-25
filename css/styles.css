@@ -121,6 +121,11 @@ input:focus {
   text-align: center;
 }
 
+.base-card-container {
+  margin: 4.5rem auto;
+  width: 375px;
+}
+
 .card {
   display: flex;
   flex-direction: row-reverse;

@@ -15,12 +15,12 @@
   <title>The Shade Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="uJ7ANYIN_7WPKMkuiBUicYNK0atfdAmAsjU0_KUC538" />
-  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,800" rel="stylesheet">
+  <meta name="description" content="Never waste time trying to find the right shade of a color again. With the Shade Generator for web designers and developers, every shade you'll ever need is just a click away.">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
+<div id="wrapper">
   <div id="intro">
     <div class="main-logo-div">
       <img src="icons/shade-generator-icon.svg" class="shade-generator-icon">
@@ -37,32 +37,15 @@
 
   <div id="add-js"></div>
 
+  <img src="icons/menu.svg" alt="menu" id="menu-button" class="button"></img>
+  <img src="icons/moon.svg" alt="darkmode" id="dark-button" class="button"></img>
+  <img src="icons/github.svg" alt="github" id="github-button" class="button"></img>
+  <img src="icons/info.svg" alt="about" id="about-button" class="button"></img>
+
   <script src="js/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.1/lib/darkmode-js.min.js"></script>
-  <script>
-      //This uses the cdn above and calls Dark mode and shows widget
-      new Darkmode().showWidget();
-      //These are all you widget options
-      var options = {
-          bottom: '64px', // default: '32px'
-          right: 'unset', // default: '32px'
-          left: '32px', // default: 'unset'
-          time: '0.5s', // default: '0.3s'
-          mixColor: '#fff', // default: '#fff'
-          backgroundColor: '#fff',  // default: '#fff'
-          buttonColorDark: '#100f2c',  // default: '#100f2c'
-          buttonColorLight: '#fff', // default: '#fff'
-          saveInCookies: false, // default: true,
-          label: '🌓', // default: ''
-          autoMatchOsTheme: true // default: true
-      }
-
-      const darkmode = new Darkmode(options);
-      darkmode.showWidget();
-  </script>
-
   <footer>
     <p class="footer">Copyright &copy <script>document.write(new Date().getFullYear());</script> varlevi</p>
   </footer>
+</div>
 </body>
 </html>

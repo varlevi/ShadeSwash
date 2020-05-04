@@ -8,7 +8,7 @@ body {
   font-weight: 100;
   font-size: 1em;
   line-height: 1.5em;
-  color: #8d9aa5;
+  color: #222;
   text-align: center;
   overflow-x: hidden;
 }
@@ -16,7 +16,7 @@ body {
 
 h1, h2, h3 {
   font-weight: 100;
-  color: #384047;
+  color: #222;
   line-height: 1.5em;
   font-family: 'Muli', cursive;
 }
@@ -41,7 +41,6 @@ h3 {
   font-size: 2em;
   font-weight: 100;
   margin: 0;
-  padding-top: 5%;
 }
 
 h3 em {
@@ -60,6 +59,17 @@ p {
   border-bottom-color: auto;
   line-height: 1.25em;
   font-family: 'Muli';
+}
+
+.footer {
+  display: inline;
+  font-size: 1.75em;
+  border-top: solid 1.5px;
+  border-bottom-top: auto;
+  padding-bottom: 3px;
+  line-height: 1.5em;
+  font-family: 'Muli';
+  color: #888;
 }
 
 input {
@@ -137,7 +147,7 @@ input:focus {
 }
 
 .card:hover {
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
 
 .card-text {
@@ -157,7 +167,7 @@ footer {
 }
 
 .footer {
-  border-bottom: none;
+  border-top: none;
   font-size: 1em;
   font-family: 'Muli', cursive;
 }
@@ -201,6 +211,75 @@ footer {
     justify-content: flex-end;
   }
 
+.button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  line-height: 70px;
+
+  position: fixed;
+  z-index: 200;
+}
+
+.button:hover {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, .2);
+}
+
+#dark-button {
+  left: 30px;
+  bottom: 120px;
+  opacity: 0.0;
+  display: 'none';
+}
+
+#github-button {
+  left: 30px;
+  bottom: 180px;
+  opacity: 0.0;
+  display: 'none';
+}
+
+#about-button {
+  left: 30px;
+  bottom: 240px;
+  opacity: 0.0;
+  display: 'none';
+}
+
+#menu-button {
+   left: 30px;
+   bottom: 30px;
+}
+
+#menu-button:hover {
+   transform: scale(1.2);
+}
+
+#add-js {
+ margin: 0px 4rem;
+}
+
+.js-modal { 
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  background-color: #ddd;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, .2);
+  width: 50%;
+  max-height: 80%;
+  padding: 1em;
+  border-radius: 5px; 
+  z-index: 100;
+  overflow: auto;
+}
+
+@media screen and (max-width: 600px) {
   h1 {
     font-size: 2.25em;
   }

@@ -1,91 +1,168 @@
-document.getElementsByClassName('submit')[0].addEventListener('click', (event) => {
+/**
+ * Convert RGB to hexcode string
+ * @param {Object} {red: Number, green: Number, blue: Number}
+ * @return {String} hexcode from provided RGB values
+ */
+const rgbToHex = ({ red, green, blue }) =>
+    (blue | (green << 8) | (red << 16) | (1 << 24)).toString(16).slice(1);
 
-  //removes any previously generated shade Sets
+/**
+ * Retrieve user's input value for each rgb color
+ * @param  {Array<String>} colors ['red', 'green', 'blue']
+ * @return {Array<Number>} Array of user input RGB values for each color
+ */
+const getRGBValues = colors =>
+    colors.map(color => {
+        return parseInt(document.getElementsByClassName(color)[0].value, 10);
+    });
 
-  let addJs = document.getElementById("add-js");
-  while (addJs.hasChildNodes()) {
-    addJs.removeChild(addJs.firstChild);
-  }
+/**
+ * Validate if user input is valid RGB value
+ * @param {Number} value RGB value
+ * @return {Boolean} Valid RGB value?
+ */
+const isValid = value => !isNaN(value) && value < 256 && value >= 0;
 
-  //get color values
-  let red = document.getElementsByClassName('red')[0].value;
-  let green = document.getElementsByClassName('green')[0].value;
-  let blue = document.getElementsByClassName('blue')[0].value;
+/**
+ * Toggle "error" class on RGB input element
+ * depending on user input validity
+ * @param {Array<String>} colors ['red', 'green', 'blue']
+ * @param {Array<Number>} values [Number, Number, Number]
+ * @return {Boolean} All user input values validity
+ */
+const valuesValidators = (colors, values) => {
+    const allValid = colors.every((color, index) => {
+        const element = document.getElementsByClassName(color)[0].classList;
+        element.remove("error");
+        const validColorValue = isValid(values[index]);
+        !validColorValue && element.add("error");
+        return validColorValue;
+    });
+    return allValid;
+};
 
-  //check for valid values
-  if (isNaN(red) || red > 256 || red < 0) {
-    document.getElementsByClassName("red")[0].classList.add('error');
-  } else {
-    document.getElementsByClassName("red")[0].classList.remove('error');
-  }
-  if (isNaN(green) || green > 256 || green < 0) {
-    document.getElementsByClassName("green")[0].classList.add('error');
-  } else {
-    document.getElementsByClassName("green")[0].classList.remove('error');
-  }
-  if (isNaN(blue) || blue > 256 || blue < 0) {
-    document.getElementsByClassName("blue")[0].classList.add('error');
-  } else {
-    document.getElementsByClassName("blue")[0].classList.remove('error');
-  }
-  if (isNaN(blue) || blue > 256 || blue < 0 || isNaN(green) || green > 256 || green < 0 || isNaN(red) || red > 256 || red < 0) {
-    alert("Make sure all color inputs are valid numbers between 0 and 255.");
-  }
+/**
+ * Create RGB color string
+ * @param {Object} { red: Number, blue: Number, green: Number }
+ * @return RGB string from RGB values: rgb(red, green, blue)
+ */
+const baseColor = ({ red, green, blue }) => `rgb(${red}, ${green}, ${blue})`;
 
-  //functions
-  var baseColor = () => {
-   var color = 'rgb(';
-    color += red + ',';
-    color += green + ',';
-    color += blue + ')';
-    return color;
-  }
+/**
+ * Display alert prompt if user RGB is not valid & reset content
+ * @return void
+ */
+const showAlert = () => {
+    const hasErrors = document.getElementsByClassName("error").length;
+    hasErrors &&
+        alert(
+            "Make sure all color inputs are valid numbers between 0 and 255."
+        );
+};
 
-  var print = (message) => {
-    document.getElementById("add-js").innerHTML += `${message}`;
-  }
 
-  var printRGB = () => {
-    print( '<p>rgb(' + red + ', ' + green + ', ' + blue + ')<br></p>' );
-  }
+const printContent = content => {
+    const rootDiv = document.getElementById("add-js");
+    if (content) rootDiv.innerHTML += `${content}`;
+    else rootDiv.innerHTML = "";
+};
 
-  //Initial Color Print
-  rgbColor = baseColor();
-  html = `<div style="background-color: ${rgbColor}" class="darkmode-ignore colors"></div>`
+/**
+ * Return a title based on type
+ * @param {String} type
+ * @return {String<HTML>} title string
+ */
+const addTitle = type => {
+    const title = {
+        base: `<h2>Here are your results:</h2><h3>Base Color:</h3>`,
+        shade: `<h3>Shades:</h3>`
+    };
 
-  print('<h2>Here are your results:</h2>');
-  print( '<h3>Base Color: <br></h3>' );
-  print( `<section class="card">${html}</br><p>rgb(${red}, ${green}, ${blue})</p></section>` );
-  for (i = 0; i < 5; i += 1) {
-    print( ' </br>' );
-  }
+    return title[type];
+};
 
-  //Sets color to the darkest Shade
+/**
+ * Create a Card Element
+ * @param {Object} { red: Number, green: Number, blue: Number }
+ * @param {Boolean} center Adds a "card-center" class if true
+ * @return {String<HTML>} Card Element
+ */
+const addCard = ({ red, green, blue }, center = false) => {
+    const rgbColor = baseColor({ red, green, blue });
+    const hexCode = rgbToHex({ red, green, blue });
 
-  while ( red > 0 && green > 0 && blue > 0 ) {
-    red -= 1;
-    green -= 1;
-    blue -= 1;
-  }
+    return `
+        <section class="card">
+            <div class="card-text">
+                <p>${rgbColor}</p>
+                <p>#${hexCode}</p>
+            </div>
+            <div>
+                <div 
+                    style="background-color: ${rgbColor}" 
+                    class="darkmode-ignore colors"
+                />
+            </div>
+        </section>
+    `;
+};
 
-  //Prints all Shades
+const generateShades = () => {
+    // reset shades
+    printContent();
 
-  print( '<h3>Shades: <br></h3><section class="colors-div">' );
+    // Get user input for RGB values
+    let content = "";
+    const colors = ["red", "green", "blue"];
+    const values = getRGBValues(colors);
+    let [red, green, blue] = values;
 
-  while (red < 256 && green < 256 && blue < 256) {
+    const allValid = valuesValidators(colors, values);
+    if (!allValid) {
+        showAlert();
+        printContent();
+        return;
+    }
 
-    rgbColor = baseColor();
-    html = `<div style="background-color: ${rgbColor}" class="darkmode-ignore colors"></div>`
+    // Base Card
+    content += addTitle("base");
+    content += `<div class="base-card-container">`;
+    content += addCard({ red, green, blue });
+    content += `</div>`;
 
-    print( `<section class="card">${html}</br><p>rgb(${red}, ${green}, ${blue})</p></section>` );
+    // Shades Cards Title
+    content += addTitle("shade");
+    content += `<div class="cards">`;
 
-    red += 2;
-    blue += 2;
-    green += 2;
-  }
+    // Sets color to the darkest Shade
+    while (red > 0 && green > 0 && blue > 0) {
+        red--;
+        green--;
+        blue--;
+    }
 
-  print('</section>');
+    // Generate all Shades Cards
+    while (red < 256 && green < 256 && blue < 256) {
+        content += addCard({ red, green, blue });
 
+        red += 2;
+        green += 2;
+        blue += 2;
+    }
+
+    // Display all content in root div
+    content += `</div>`;
+    printContent(content);
+}
+
+document.addEventListener('keypress', event => {
+    if (event.keyCode === 13) {
+        generateShades();
+    }
+})
+
+document.getElementById("submit").addEventListener("click", event => {
+    generateShades();
 });
 
 //Custom settings panel

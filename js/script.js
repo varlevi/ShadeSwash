@@ -197,34 +197,30 @@ menuButton.addEventListener('click', () => {
   }
 })
 
+const root = document.documentElement;
+
 darkButton.addEventListener('click', () => {
   darkModeState = !darkModeState;
   let h3 = document.getElementsByTagName('H3');
   let buttons = document.getElementsByClassName('button')
   if (darkModeState == true) {
     document.body.style.backgroundColor = "#111";
-    document.getElementsByTagName('h1')[0].style.color = '#DDD';
-    document.getElementsByTagName('h2')[0].style.color = '#DDD';
+    root.style.setProperty('--base-color', '#DDD');
+    root.style.setProperty('--secondary-color', '#111');
     githubButton.src = "icons/github-white.svg";
     menuButton.src = "icons/menu-white.svg";
     darkButton.src = "icons/moon-white.svg";
     aboutButton.src = "icons/info-white.svg";
-    for (i of h3) {
-      i.style.color = '#DDD';
-    }
   } else {
     document.body.style.backgroundColor = "#FFF";
-    document.getElementsByTagName('h1')[0].style.color = '#384047';
-    document.getElementsByTagName('h2')[0].style.color = '#384047';
+    root.style.setProperty('--base-color', '#111');
+    root.style.setProperty('--secondary-color', '#DDD');
     githubButton.src = "icons/github.svg";
     menuButton.src = "icons/menu.svg";
     darkButton.src = "icons/moon.svg";
     aboutButton.src = "icons/info.svg";
     for (i of buttons) {
-      i.style.color = '#222';
-    }
-    for (i of h3) {
-      i.style.color = '#333';
+      i.style.color = '#111';
     }
   }
 })
@@ -233,7 +229,7 @@ githubButton.addEventListener('click', () => {
   window.location.href = 'https://github.com/varlevi/the_shade_generator';
 })
 
-function newModal(title, content) {
+const newModal = (title, content) => {
   if (aboutState == true) {
     let modalBackground = document.createElement('DIV');
     let modal = document.createElement('DIV');
@@ -249,5 +245,5 @@ function newModal(title, content) {
 
 aboutButton.addEventListener('click', () => {
   aboutState = !aboutState;
-  newModal('About', `<h4>Project Info</h4><p>The Shade Generator was created in 2019 and is maintained by varlevi in order to provide developers and designers with a simple no-frills tool for finding color shades.</p><h4>Other Projects by varlevi</h4><a href="https://colorbynumber.netlify.com/">Color By Number Mosaics</a></br><a href="https://physicscalculator.netlify.com">Simple Physics Calculator</a><h4>Attributions</h4><p>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>`);
+  newModal('About', `<h4>Project Info</h4><p>ShadeSwash was created in 2019 and is maintained by varlevi. It was created in order to provide developers and designers with a simple, well-designed tool for finding color shades.</p><h4>Other Projects by varlevi</h4><p><a href="https://colorbynumber.netlify.app/">Color By Number Mosaics</a></p></br><p><a href="https://physicscalculator.netlify.app">Simple Physics Calculator</a></p><h4>Attributions</h4><p>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>`);
 })

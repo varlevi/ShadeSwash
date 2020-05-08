@@ -204,12 +204,14 @@ footer {
   padding: 0;
 }
 
-.shade-generator-icon {
+.main-logo {
   display: inline-block;
   height: 100px;
+  width: 90px;
   margin: 45px 15px 45px 0;
   padding-right: 15px;
   border-right: 3px solid var(--base-color);
+  fill: var(--base-color);
 }
 
 /*Settings Pane*/

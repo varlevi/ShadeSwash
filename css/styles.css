@@ -1,4 +1,14 @@
+/*Imports*/
+
 @import url('https://necolas.github.io/normalize.css/3.0.2/normalize.css');
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+/*Variables*/
+
+:root {
+  --base-color: #111;
+  --secondary-color: #DDD;
+}
 
 /*General*/
 body {
@@ -8,7 +18,7 @@ body {
   font-weight: 100;
   font-size: 1em;
   line-height: 1.5em;
-  color: #8d9aa5;
+  color: var(--base-color);
   text-align: center;
   overflow-x: hidden;
 }
@@ -16,7 +26,7 @@ body {
 
 h1, h2, h3 {
   font-weight: 100;
-  color: #384047;
+  color: var(--base-color);
   line-height: 1.5em;
   font-family: 'Muli', cursive;
 }
@@ -41,7 +51,6 @@ h3 {
   font-size: 2em;
   font-weight: 100;
   margin: 0;
-  padding-top: 5%;
 }
 
 h3 em {
@@ -49,17 +58,31 @@ h3 em {
   font-weight: 100;
   margin: 0 0 10px 5px;
   padding: 0;
-  color: #8d9aa5;
+  color: var(--base-color);
 }
 
 p {
   margin: 0;
   padding-bottom: 3px;
   font-size: 1.25em;
-  border-bottom: solid 1.5px;
+  font-family: 'Muli';
+  color: var(--base-color);
+}
+
+.card-text > p {
+  border-bottom: solid 1px;
   border-bottom-color: auto;
   line-height: 1.25em;
+}
+
+.footer {
+  display: inline;
+  font-size: 1em;
+  border-top: none;
+  padding-bottom: 3px;
+  line-height: 1.5em;
   font-family: 'Muli';
+  color: var(--base-color);
 }
 
 input {
@@ -80,7 +103,7 @@ input {
 button {
   font-family: 'Muli';
   background-color: #DDD;
-  color: #555;
+  color: #222;
   padding: 5px 12px;
   display: inline-block;
   font-size: 16px;
@@ -109,7 +132,7 @@ input:focus {
 
 .colors:hover {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  border-color: black;
+  border-color: var(--base-color);
   border-radius: 25% 15%;
 }
 
@@ -137,7 +160,7 @@ input:focus {
 }
 
 .card:hover {
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 }
 
 .card-text {
@@ -156,12 +179,6 @@ footer {
   margin-top: 2.5%;
 }
 
-.footer {
-  border-bottom: none;
-  font-size: 1em;
-  font-family: 'Muli', cursive;
-}
-
 .error {
   border: solid 2px red;
 }
@@ -174,19 +191,97 @@ footer {
 }
 
 .logo-text {
-  color: #222;
+  color: var(--base-color);
   align-self: center;
   border: none;
   font-weight: 400;
   padding: 0;
 }
 
-.shade-generator-icon {
+.main-logo {
   display: inline-block;
   height: 100px;
+  width: 90px;
   margin: 45px 15px 45px 0;
   padding-right: 15px;
-  border-right: 3px solid #222;
+  border-right: 3px solid var(--base-color);
+  fill: var(--base-color);
+}
+
+/*Settings Pane*/
+
+.button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  line-height: 70px;
+
+  position: fixed;
+  z-index: 200;
+}
+
+.button:hover {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, .2);
+}
+
+#dark-button {
+  left: 30px;
+  bottom: 120px;
+  opacity: 0.0;
+  display: 'none';
+}
+
+#github-button {
+  left: 30px;
+  bottom: 180px;
+  opacity: 0.0;
+  display: 'none';
+}
+
+#about-button {
+  left: 30px;
+  bottom: 240px;
+  opacity: 0.0;
+  display: 'none';
+}
+
+#menu-button {
+   left: 30px;
+   bottom: 30px;
+}
+
+#menu-button:hover {
+   transform: scale(1.2);
+}
+
+#add-js {
+ margin: 0px 4rem;
+}
+
+/*Modal*/
+
+.js-modal { 
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  background: var(--base-color);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, .2);
+  width: 50%;
+  max-height: 80%;
+  padding: 1em;
+  border-radius: 5px; 
+  z-index: 100;
+  overflow: auto;
+}
+
+.js-modal > p, .js-modal > h1, .js-modal > h2, .js-modal > h3, .js-modal > h4 {
+  color: var(--secondary-color);
 }
 
 @media screen and (max-width: 750px) {
@@ -200,7 +295,9 @@ footer {
   .card-center {
     justify-content: flex-end;
   }
+}
 
+@media screen and (max-width: 600px) {
   h1 {
     font-size: 2.25em;
   }
@@ -221,10 +318,6 @@ footer {
   h2 {
     font-size: 2rem;
   }
-
-  .footer {
-    font-size: 1rem;
-  }
 }
 
 @media screen and (max-width: 825px) {
@@ -238,10 +331,6 @@ footer {
     text-align: center;
     margin-left: 0;
     margin-right: 0;
-  }
-
-  .footer {
-    font-size: 1rem;
   }
 }
 
@@ -270,9 +359,5 @@ footer {
 
   h2 {
     font-size: 3.5em;
-  }
-
-  .footer {
-    font-size: 2em;
   }
 }

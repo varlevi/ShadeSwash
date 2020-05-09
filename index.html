@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158580752-1"></script>
   <script>
@@ -16,15 +17,15 @@
   <meta name="description" content="Never waste time trying to find the right shade of a color again. With ShadeSwash, every shade you'll ever need is just a click away.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="uJ7ANYIN_7WPKMkuiBUicYNK0atfdAmAsjU0_KUC538" />
-  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,800" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
+<div id="wrapper">
   <div id="intro">
     <div class="main-logo-div">
-      <img src="icons/shade-generator-icon.svg" class="shade-generator-icon">
+      <!-- <img src="icons/shade-generator-icon.svg" class="shade-generator-icon"> -->
+      <?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- Generator: Gravit.io --><svg class="main-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="122.63 1 265 510" width="265pt" height="510pt"><path d=" M 255.12 246 L 255.12 246 C 240.09 246.01 225.21 243 211.36 237.16 C 198 231.49 185.86 223.3 175.6 213.03 C 165.33 202.77 157.14 190.63 151.47 177.27 C 146.732 166.052 143.863 154.151 142.94 142.048 L 142.94 142.048 C 154.033 139.576 175.81 129.531 223.088 129.531 C 256.802 129.531 304.727 156.863 324.915 156.433 C 341.894 156.071 366.935 149.525 379.08 143.396 L 379.08 143.396 C 381.192 143.083 383.168 142.103 384.7 140.58 C 386.57 138.7 387.63 136.16 387.63 133.51 C 387.64 115.79 384.1 98.26 377.21 81.94 C 370.54 66.2 360.89 51.9 348.8 39.83 C 336.73 27.74 322.43 18.09 306.69 11.42 C 290.37 4.53 272.84 0.99 255.13 1 C 237.42 0.99 219.89 4.53 203.57 11.42 C 187.83 18.09 173.53 27.74 161.46 39.83 C 149.37 51.9 139.72 66.2 133.05 81.94 C 126.16 98.26 122.62 115.79 122.63 133.5 C 122.62 151.21 126.16 168.74 133.05 185.06 C 139.72 200.8 149.37 215.1 161.46 227.17 C 173.53 239.26 187.83 248.91 203.57 255.58 C 219.89 262.47 237.42 266.01 255.14 266 L 255.14 266 C 270.17 265.99 285.05 269 298.9 274.84 C 312.26 280.51 324.4 288.7 334.66 298.97 C 344.93 309.23 353.12 321.37 358.79 334.73 C 363.293 345.39 366.107 356.666 367.14 368.151 L 367.14 368.151 C 356.036 370.744 334.382 380.7 287.794 380.7 C 254.312 380.7 206.716 353.182 186.667 353.615 C 167.33 354.032 137.464 362.638 128.468 369.409 C 127.397 369.897 126.41 370.575 125.56 371.42 C 123.69 373.3 122.63 375.84 122.63 378.49 C 122.62 396.21 126.16 413.74 133.05 430.06 C 139.72 445.8 149.37 460.1 161.46 472.17 C 173.53 484.26 187.83 493.91 203.57 500.58 C 219.89 507.47 237.42 511.01 255.13 511 C 272.84 511.01 290.37 507.47 306.69 500.58 C 322.43 493.91 336.73 484.26 348.8 472.17 C 360.89 460.1 370.54 445.8 377.21 430.06 C 384.1 413.74 387.64 396.21 387.63 378.5 C 387.64 360.79 384.1 343.26 377.21 326.94 C 370.54 311.2 360.89 296.9 348.8 284.83 C 336.73 272.74 322.43 263.09 306.69 256.42 C 290.37 249.53 272.84 245.99 255.12 246 Z " fill-rule="evenodd"/></svg>
       <p class="logo-text">ShadeSwash</p>
     </div>
     <input type="number"  max="255" min="0"class="red" placeholder="Red Value">
@@ -38,32 +39,14 @@
 
   <div id="add-js"></div>
 
+  <img src="icons/menu.svg" alt="menu" id="menu-button" class="button"></img>
+  <img src="icons/moon.svg" alt="darkmode" id="dark-button" class="button"></img>
+  <img src="icons/github.svg" alt="github" id="github-button" class="button"></img>
+  <img src="icons/info.svg" alt="about" id="about-button" class="button"></img>
   <script src="js/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.1/lib/darkmode-js.min.js"></script>
-  <script>
-      //This uses the cdn above and calls Dark mode and shows widget
-      new Darkmode().showWidget();
-      //These are all you widget options
-      var options = {
-          bottom: '64px', // default: '32px'
-          right: 'unset', // default: '32px'
-          left: '32px', // default: 'unset'
-          time: '0.5s', // default: '0.3s'
-          mixColor: '#fff', // default: '#fff'
-          backgroundColor: '#fff',  // default: '#fff'
-          buttonColorDark: '#100f2c',  // default: '#100f2c'
-          buttonColorLight: '#fff', // default: '#fff'
-          saveInCookies: false, // default: true,
-          label: '🌓', // default: ''
-          autoMatchOsTheme: true // default: true
-      }
-
-      const darkmode = new Darkmode(options);
-      darkmode.showWidget();
-  </script>
-
   <footer>
-    <p class="footer">Copyright &copy <script>document.write(new Date().getFullYear());</script> varlevi</p>
+    <p class="footer">Made with U+2764 by varlevi and other GitHub contributers.</p>
   </footer>
+</div>
 </body>
 </html>

@@ -66,6 +66,7 @@ p {
   padding-bottom: 3px;
   font-size: 1.25em;
   font-family: 'Muli';
+  color: var(--base-color);
 }
 
 .card-text > p {

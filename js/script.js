@@ -207,18 +207,26 @@ darkButton.addEventListener('click', () => {
     document.body.style.backgroundColor = "#111";
     root.style.setProperty('--base-color', '#DDD');
     root.style.setProperty('--secondary-color', '#111');
-    githubButton.src = "icons/github-white.svg";
-    menuButton.src = "icons/menu-white.svg";
-    darkButton.src = "icons/moon-white.svg";
-    aboutButton.src = "icons/info-white.svg";
-  } else {
-    document.body.style.backgroundColor = "#FFF";
-    root.style.setProperty('--base-color', '#111');
-    root.style.setProperty('--secondary-color', '#DDD');
+    root.style.setProperty('--neumorphic-shadow-light', '#141414');
+    root.style.setProperty('--neumorphic-shadow-dark', '#0e0e0e');
+    root.style.setProperty('--neumorphic-fill-light', '#121212');
+    root.style.setProperty('--neumorphic-fill-dark', '#0f0f0f');
     githubButton.src = "icons/github.svg";
     menuButton.src = "icons/menu.svg";
     darkButton.src = "icons/moon.svg";
     aboutButton.src = "icons/info.svg";
+  } else {
+    document.body.style.backgroundColor = "#FFF";
+    root.style.setProperty('--base-color', '#111');
+    root.style.setProperty('--secondary-color', '#DDD');
+    root.style.setProperty('--neumorphic-shadow-light', '#ffffff');
+    root.style.setProperty('--neumorphic-shadow-dark', '#d9d9d9');
+    root.style.setProperty('--neumorphic-fill-light', '#ffffff');
+    root.style.setProperty('--neumorphic-fill-dark', '#e6e6e6');
+    githubButton.src = "icons/github-white.svg";
+    menuButton.src = "icons/menu-white.svg";
+    darkButton.src = "icons/moon-white.svg";
+    aboutButton.src = "icons/info-white.svg";
     for (i of buttons) {
       i.style.color = '#111';
     }

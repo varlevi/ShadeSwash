@@ -6,15 +6,22 @@
 /*Variables*/
 
 :root {
-  --base-color: #111;
-  --secondary-color: #DDD;
+  --base-color: #111111;
+  --secondary-color: #dddddd;
+
+  --neumorphic-shadow-light: #ffffff;
+  --neumorphic-shadow-dark: #d9d9d9;
+  --neumorphic-fill-light: #ffffff;
+  --neumorphic-fill-dark: #e6e6e6;
+
+  --font-stack: 'Muli', 'Helvetica Neue', 'Helvectica', 'Arial', serif;
 }
 
 /*General*/
 body {
   margin: 0;
   padding: 0;
-  font: 'Muli', 'Helvetica Neue', 'Helvectica', 'Arial', serif;
+  font-family: var(--font-stack);
   font-weight: 100;
   font-size: 1em;
   line-height: 1.5em;
@@ -28,7 +35,7 @@ h1, h2, h3 {
   font-weight: 100;
   color: var(--base-color);
   line-height: 1.5em;
-  font-family: 'Muli', cursive;
+  font-family: var(--font-stack);
 }
 
 h1 {
@@ -65,7 +72,7 @@ p {
   margin: 0;
   padding-bottom: 3px;
   font-size: 1.25em;
-  font-family: 'Muli';
+  font-family: var(--font-stack);
   color: var(--base-color);
 }
 
@@ -81,27 +88,49 @@ p {
   border-top: none;
   padding-bottom: 3px;
   line-height: 1.5em;
-  font-family: 'Muli';
+  font-family: var(--font-stack);
   color: var(--base-color);
 }
 
 input {
-  font-family: 'Muli';
+  font-family: var(--font-stack);
   font-weight: 400;
   width: 200px;
   text-align: center;
   display: inline-block;
+  position: relative;
   border-width: 0pt;
-  background-color: #DDD;
+  background: linear-gradient(145deg, var(--neumorphic-fill-light), var(--neumorphic-fill-dark));
   color: #555;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   border-radius: 2em;
   padding: .5em;
   size: 15em;
+  box-shadow:  9px 9px 18px var(--neumorphic-shadow-dark), 
+              -9px -9px 18px var(--neumorphic-shadow-light);
 }
 
+.card::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(145deg, var(--neumorphic-fill-light), var(--neumorphic-fill-dark));
+  z-index: -1;
+  transition: opacity 0.5s linear;
+  opacity: 0;
+  border-radius: 25px;
+}
+
+.card:focus::before {
+  opacity: 1;
+}
+
+
 button {
-  font-family: 'Muli';
+  font-family: var(--font-stack);
   background-color: #DDD;
   color: #222;
   padding: 5px 12px;
@@ -121,20 +150,22 @@ button:focus {
 
 input:focus {
   outline-width: 0;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(145deg, var(--neumorphic-fill-dark), var(--neumorphic-fill-light));
+  box-shadow:  20px 20px 18px var(--neumorphic-shadow-dark), 
+             -20px -20px 18px var(--neumorphic-shadow-light);
 }
 
 .colors {
-  transition: border-radius 0.5s ease;
+  transition: border-radius 0.5s ;
   width: 100px;
   height: 100px;
-  border-radius: 15% 25%;
+  border-radius: 61% 39% 28% 72% / 35% 31% 69% 65%;
+  box-shadow:  20px 20px 18px var(--neumorphic-shadow-dark), 
+             -20px -20px 18px var(--neumorphic-shadow-light);
 }
 
 .colors:hover {
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  border-color: var(--base-color);
-  border-radius: 25% 15%;
+  border-radius: 37% 63% 59% 41% / 57% 33% 67% 43% ;
 }
 
 .cards {
@@ -143,6 +174,7 @@ input:focus {
   margin: 4.5rem;
   margin-bottom: 1.25rem;
   text-align: center;
+  row-gap: 50px;
 }
 
 .base-card-container {
@@ -152,17 +184,37 @@ input:focus {
 
 .card {
   display: flex;
+  position: relative;
+  z-index: 1;
   flex-direction: row-reverse;
   justify-content: space-around;
   min-width: 350px;
   max-width: 375px;
-  padding: .75rem;
+  padding: 3rem 1rem;
+  border-radius: 25px;
+  background-image: linear-gradient(145deg, var(--neumorphic-fill-dark), var(--neumorphic-fill-light));
+  box-shadow:  20px 20px 60px var(--neumorphic-shadow-dark), 
+             -20px -20px 60px var(--neumorphic-shadow-light);
+}
+
+.card::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(145deg, var(--neumorphic-fill-light), var(--neumorphic-fill-dark));
+  z-index: -1;
+  transition: opacity 0.5s linear;
+  opacity: 0;
   border-radius: 25px;
 }
 
-.card:hover {
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+.card:hover::before {
+  opacity: 1;
 }
+
 
 .card-text {
   display: flex;
@@ -224,10 +276,15 @@ footer {
 
   position: fixed;
   z-index: 200;
+
+  box-shadow:  5px 5px 15px var(--neumorphic-shadow-dark), 
+             -5px -5px 15px var(--neumorphic-shadow-light), 
+             inset 0px 0px 45px var(--neumorphic-shadow-dark); 
 }
 
 .button:hover {
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, .2);
+  box-shadow:  inset 9px 9px 18px var(--neumorphic-shadow-dark), 
+  inset -9px -9px 18px var(--neumorphic-shadow-light);
   cursor: pointer;
 }
 
@@ -292,6 +349,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 40px;
   }
 
   .card-center {
